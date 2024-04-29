@@ -12,6 +12,17 @@ dependencies:
   flutekeyboard: ^0.1.0
 ```
 
+or
+
+```yaml
+dependencies:
+  ...
+  flutekeyboard:
+    git:
+      url: https://github.com/amarula/flutekeyboard.git
+      ref: main
+```
+
 To use the keyboard widget import it:
 
 ```dart
