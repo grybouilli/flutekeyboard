@@ -15,12 +15,15 @@ class NumericKeyboard extends StatefulWidget {
 
   final String backspaceIcon;
 
+  final Function onReturn;
+
   const NumericKeyboard({
     super.key,
     required this.textController,
     required this.btnColor,
     required this.btnSpecialBackgroundColor,
     required this.backspaceIcon,
+    required this.onReturn,
   });
 
   @override
@@ -108,7 +111,7 @@ class _NumericKeyboardState extends State<NumericKeyboard> {
         textColor: Colors.black,
         backgroundColor: widget.btnSpecialBackgroundColor,
         onPressed: () {
-          widget.textController.clearComposing();
+          widget.onReturn();
         },
       ),
     );

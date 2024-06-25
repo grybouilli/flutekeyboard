@@ -34,22 +34,26 @@ class FluteKeyboard extends StatefulWidget {
 
   final Layout alphanumericLayout;
 
-  const FluteKeyboard(
-      {super.key,
-      required this.type,
-      required this.textController,
-      required this.shiftIcon,
-      required this.shiftActiveIcon,
-      required this.backspaceIcon,
-      this.width = 480,
-      this.height = 240,
-      this.backgroundColor = Colors.transparent,
-      this.btnBackgroundColor = Colors.transparent,
-      this.btnSpecialBackgroundColor = Colors.transparent,
-      this.btnTextFontFamily = '',
-      this.btnTextFontSize = 24,
-      this.btnTextColor = Colors.transparent,
-      this.alphanumericLayout = EnLayout.layout});
+  final Function onReturn;
+
+  const FluteKeyboard({
+    super.key,
+    required this.type,
+    required this.textController,
+    required this.shiftIcon,
+    required this.shiftActiveIcon,
+    required this.backspaceIcon,
+    required this.onReturn,
+    this.width = 480,
+    this.height = 240,
+    this.backgroundColor = Colors.transparent,
+    this.btnBackgroundColor = Colors.transparent,
+    this.btnSpecialBackgroundColor = Colors.transparent,
+    this.btnTextFontFamily = '',
+    this.btnTextFontSize = 24,
+    this.btnTextColor = Colors.transparent,
+    this.alphanumericLayout = EnLayout.layout,
+  });
 
   @override
   State<FluteKeyboard> createState() => _FluteKeyboardState();
@@ -63,6 +67,7 @@ class _FluteKeyboardState extends State<FluteKeyboard> {
         btnColor: widget.btnBackgroundColor,
         btnSpecialBackgroundColor: widget.btnSpecialBackgroundColor,
         backspaceIcon: widget.backspaceIcon,
+        onReturn: widget.onReturn,
       );
     }
 
@@ -74,6 +79,7 @@ class _FluteKeyboardState extends State<FluteKeyboard> {
       shiftActiveIcon: widget.shiftActiveIcon,
       backspaceIcon: widget.backspaceIcon,
       layout: widget.alphanumericLayout,
+      onReturn: widget.onReturn,
     );
   }
 

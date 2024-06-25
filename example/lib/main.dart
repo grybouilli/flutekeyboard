@@ -117,6 +117,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 backspaceIcon: 'assets/backspace.png',
                 shiftIcon: 'assets/shift.png',
                 shiftActiveIcon: 'assets/shift_active.png',
+                onReturn: () {
+                  print(_textController.text);
+                },
               ),
             ),
           ],

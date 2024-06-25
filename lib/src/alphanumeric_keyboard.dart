@@ -22,6 +22,8 @@ class AlphanumericKeyboard extends StatefulWidget {
 
   final Layout layout;
 
+  final Function onReturn;
+
   const AlphanumericKeyboard({
     super.key,
     required this.textController,
@@ -31,6 +33,7 @@ class AlphanumericKeyboard extends StatefulWidget {
     required this.shiftActiveIcon,
     required this.backspaceIcon,
     required this.layout,
+    required this.onReturn,
   });
 
   @override
@@ -233,7 +236,7 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
         textColor: Colors.black,
         backgroundColor: widget.btnSpecialBackgroundColor,
         onPressed: () {
-          widget.textController.clearComposing();
+          widget.onReturn();
         },
       ),
     );
