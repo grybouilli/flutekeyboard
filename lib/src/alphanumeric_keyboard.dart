@@ -18,6 +18,8 @@ class AlphanumericKeyboard extends StatefulWidget {
   final String shiftIcon;
   final String shiftActiveIcon;
 
+  final TextStyle btnTextStyle;
+
   final String backspaceIcon;
 
   final Layout layout;
@@ -29,6 +31,7 @@ class AlphanumericKeyboard extends StatefulWidget {
     required this.textController,
     required this.btnColor,
     required this.btnSpecialBackgroundColor,
+    required this.btnTextStyle,
     required this.shiftIcon,
     required this.shiftActiveIcon,
     required this.backspaceIcon,
@@ -128,7 +131,7 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
       child: TextKey(
         textController: widget.textController,
         text: _shiftActive ? text.toUpperCase() : text.toLowerCase(),
-        textColor: Colors.black,
+        textStyle: widget.btnTextStyle,
         backgroundColor: widget.btnColor,
       ),
     );
@@ -172,7 +175,7 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
       flex: 3,
       child: SpecialKey(
         text: 'space',
-        textColor: Colors.black,
+        textStyle: widget.btnTextStyle,
         backgroundColor: widget.btnColor,
         onPressed: () {
           widget.textController.text += ' ';
@@ -185,7 +188,7 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
     return Expanded(
       child: SpecialKey(
         text: '123',
-        textColor: Colors.black,
+        textStyle: widget.btnTextStyle,
         backgroundColor: widget.btnSpecialBackgroundColor,
         onPressed: () {
           setState(() {
@@ -201,7 +204,7 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
     return Expanded(
       child: SpecialKey(
         text: '#+=',
-        textColor: Colors.black,
+        textStyle: widget.btnTextStyle,
         backgroundColor: widget.btnSpecialBackgroundColor,
         onPressed: () {
           setState(() {
@@ -217,7 +220,7 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
     return Expanded(
       child: SpecialKey(
         text: 'ABC',
-        textColor: Colors.black,
+        textStyle: widget.btnTextStyle,
         backgroundColor: widget.btnSpecialBackgroundColor,
         onPressed: () {
           setState(() {
@@ -233,7 +236,7 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
     return Expanded(
       child: SpecialKey(
         text: 'return',
-        textColor: Colors.black,
+        textStyle: widget.btnTextStyle,
         backgroundColor: widget.btnSpecialBackgroundColor,
         onPressed: () {
           widget.onReturn();

@@ -23,9 +23,7 @@ class FluteKeyboard extends StatefulWidget {
   final Color btnBackgroundColor;
   final Color btnSpecialBackgroundColor;
 
-  final String btnTextFontFamily;
-  final double btnTextFontSize;
-  final Color btnTextColor;
+  final TextStyle btnTextStyle;
 
   final String shiftIcon;
   final String shiftActiveIcon;
@@ -49,9 +47,7 @@ class FluteKeyboard extends StatefulWidget {
     this.backgroundColor = Colors.transparent,
     this.btnBackgroundColor = Colors.transparent,
     this.btnSpecialBackgroundColor = Colors.transparent,
-    this.btnTextFontFamily = '',
-    this.btnTextFontSize = 24,
-    this.btnTextColor = Colors.transparent,
+    this.btnTextStyle = const TextStyle(color: Colors.white),
     this.alphanumericLayout = EnLayout.layout,
   });
 
@@ -66,6 +62,7 @@ class _FluteKeyboardState extends State<FluteKeyboard> {
         textController: widget.textController,
         btnColor: widget.btnBackgroundColor,
         btnSpecialBackgroundColor: widget.btnSpecialBackgroundColor,
+        btnTextStyle: widget.btnTextStyle,
         backspaceIcon: widget.backspaceIcon,
         onReturn: widget.onReturn,
       );
@@ -77,6 +74,7 @@ class _FluteKeyboardState extends State<FluteKeyboard> {
       btnSpecialBackgroundColor: widget.btnSpecialBackgroundColor,
       shiftIcon: widget.shiftIcon,
       shiftActiveIcon: widget.shiftActiveIcon,
+      btnTextStyle: widget.btnTextStyle,
       backspaceIcon: widget.backspaceIcon,
       layout: widget.alphanumericLayout,
       onReturn: widget.onReturn,

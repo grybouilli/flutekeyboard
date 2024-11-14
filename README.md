@@ -51,6 +51,10 @@ import 'package:flutekeyboard/flutekeyboard_keys.dart';
         btnSpecialBackgroundColor:
             const Color.fromARGB(255, 171, 175, 183),
         backspaceIcon: 'assets/backspace.png',
+        btnTextStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 28,
+                ),
         shiftIcon: 'assets/shift.png',
         shiftActiveIcon: 'assets/shift_active.png',
       ),

@@ -107,6 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const Spacer(),
             Expanded(
+              flex: 3,
               child: FluteKeyboard(
                 width: 800,
                 type: type,
@@ -119,7 +120,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 backspaceIcon: 'assets/backspace.png',
                 shiftIcon: 'assets/shift.png',
                 shiftActiveIcon: 'assets/shift_active.png',
+                btnTextStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 28,
+                ),
                 onReturn: () {
+                  // ignore: avoid_print
                   print(_textController.text);
                 },
               ),

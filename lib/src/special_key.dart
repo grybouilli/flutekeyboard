@@ -12,7 +12,7 @@ enum SpecialKeys {
 class SpecialKey extends StatefulWidget {
   final String text;
 
-  final Color textColor;
+  final TextStyle textStyle;
 
   final Color backgroundColor;
 
@@ -21,7 +21,7 @@ class SpecialKey extends StatefulWidget {
   const SpecialKey({
     super.key,
     required this.text,
-    required this.textColor,
+    required this.textStyle,
     required this.backgroundColor,
     required this.onPressed,
   });
@@ -42,10 +42,7 @@ class _SpecialKeyState extends State<SpecialKey> {
         child: Center(
           child: Text(
             widget.text,
-            style: TextStyle(
-              fontSize: 24,
-              color: widget.textColor,
-            ),
+            style: widget.textStyle,
           ),
         ),
       ),

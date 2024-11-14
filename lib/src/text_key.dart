@@ -6,7 +6,7 @@ class TextKey extends StatefulWidget {
 
   final String text;
 
-  final Color textColor;
+  final TextStyle textStyle;
 
   final Color backgroundColor;
 
@@ -14,7 +14,7 @@ class TextKey extends StatefulWidget {
     super.key,
     required this.textController,
     required this.text,
-    required this.textColor,
+    required this.textStyle,
     required this.backgroundColor,
   });
 
@@ -38,10 +38,7 @@ class _TextKeyState extends State<TextKey> {
         child: Center(
           child: Text(
             widget.text,
-            style: TextStyle(
-              fontSize: 24,
-              color: widget.textColor,
-            ),
+            style: widget.textStyle,
           ),
         ),
       ),

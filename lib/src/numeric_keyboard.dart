@@ -13,6 +13,8 @@ class NumericKeyboard extends StatefulWidget {
   final Color btnColor;
   final Color btnSpecialBackgroundColor;
 
+  final TextStyle btnTextStyle;
+
   final String backspaceIcon;
 
   final Function onReturn;
@@ -22,6 +24,7 @@ class NumericKeyboard extends StatefulWidget {
     required this.textController,
     required this.btnColor,
     required this.btnSpecialBackgroundColor,
+    required this.btnTextStyle,
     required this.backspaceIcon,
     required this.onReturn,
   });
@@ -80,7 +83,7 @@ class _NumericKeyboardState extends State<NumericKeyboard> {
       child: TextKey(
         textController: widget.textController,
         text: text,
-        textColor: Colors.black,
+        textStyle: widget.btnTextStyle,
         backgroundColor: widget.btnColor,
       ),
     );
@@ -108,7 +111,7 @@ class _NumericKeyboardState extends State<NumericKeyboard> {
     return Expanded(
       child: SpecialKey(
         text: 'return',
-        textColor: Colors.black,
+        textStyle: widget.btnTextStyle,
         backgroundColor: widget.btnSpecialBackgroundColor,
         onPressed: () {
           widget.onReturn();
