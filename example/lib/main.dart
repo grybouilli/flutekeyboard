@@ -1,9 +1,11 @@
 // Flutter imports:
-import 'package:example/custom_layout.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutekeyboard/flutekeyboard.dart';
+
+// Project imports:
+import 'package:example/custom_layout.dart';
 
 void main() {
   runApp(const MyApp());

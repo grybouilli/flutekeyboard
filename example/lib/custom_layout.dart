@@ -1,4 +1,4 @@
-// Project imports:
+// Package imports:
 import 'package:flutekeyboard/flutekeyboard_keys.dart';
 
 class CustomLayout {
