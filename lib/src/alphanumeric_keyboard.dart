@@ -163,7 +163,26 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
         textStyle: widget.btnTextStyle,
         backgroundColor: widget.btnColor,
         onPressed: () {
-          widget.textController.text += ' ';
+          // Cursor is at the end of the text.
+          if (widget.textController.selection.start ==
+              widget.textController.text.length) {
+            widget.textController.text += ' ';
+            widget.textController.selection = TextSelection.collapsed(
+                offset: widget.textController.text.length);
+          } else {
+            final oldCursorPos = widget.textController.selection.start;
+
+            widget.textController.text =
+                widget.textController.text.replaceRange(
+              widget.textController.selection.start,
+              widget.textController.selection.end,
+              ' ',
+            );
+
+            widget.textController.selection = TextSelection.fromPosition(
+              TextPosition(offset: oldCursorPos + 1),
+            );
+          }
         },
       ),
     );
