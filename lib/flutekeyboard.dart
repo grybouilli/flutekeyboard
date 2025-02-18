@@ -1,12 +1,12 @@
 library flutekeyboard;
 
 // Flutter imports:
-import 'package:flutekeyboard/layouts/en_layout.dart';
-import 'package:flutekeyboard/src/numeric_keyboard.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:flutekeyboard/layouts/en_layout.dart';
 import 'package:flutekeyboard/src/alphanumeric_keyboard.dart';
+import 'package:flutekeyboard/src/numeric_keyboard.dart';
 
 enum FluteKeyboardType { numeric, alphanumeric }
 
