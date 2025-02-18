@@ -1,8 +1,9 @@
 // Flutter imports:
-import 'package:flutekeyboard/layouts/numeric_layout.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:flutekeyboard/layouts/numeric_layout.dart';
+import 'package:flutekeyboard/src/buttons.dart';
 import 'package:flutekeyboard/src/icon_key.dart';
 import 'package:flutekeyboard/src/special_key.dart';
 import 'package:flutekeyboard/src/text_key.dart';
@@ -60,7 +61,8 @@ class _NumericKeyboardState extends State<NumericKeyboard> {
     if (type is IconKeys) {
       switch (type) {
         case IconKeys.backspace:
-          return _backspaceButton();
+          return Buttons.backspaceButton(widget.backspaceIcon,
+              widget.btnSpecialBackgroundColor, widget.textController);
         default:
           return const Placeholder();
       }
@@ -69,7 +71,8 @@ class _NumericKeyboardState extends State<NumericKeyboard> {
     if (type is SpecialKeys) {
       switch (type) {
         case SpecialKeys.returnK:
-          return _returnButton();
+          return Buttons.returnButton(widget.btnTextStyle,
+              widget.btnSpecialBackgroundColor, widget.onReturn);
         default:
           return const Placeholder();
       }
@@ -85,37 +88,6 @@ class _NumericKeyboardState extends State<NumericKeyboard> {
         text: text,
         textStyle: widget.btnTextStyle,
         backgroundColor: widget.btnColor,
-      ),
-    );
-  }
-
-  Widget _backspaceButton() {
-    return Expanded(
-      child: IconKey(
-        icon: widget.backspaceIcon,
-        backgroundColor: widget.btnSpecialBackgroundColor,
-        onPressed: () {
-          if (widget.textController.text.isEmpty) {
-            return;
-          }
-          widget.textController.text = widget.textController.text
-              .substring(0, widget.textController.text.length - 1);
-          widget.textController.selection = TextSelection.collapsed(
-              offset: widget.textController.text.length);
-        },
-      ),
-    );
-  }
-
-  Widget _returnButton() {
-    return Expanded(
-      child: SpecialKey(
-        text: 'return',
-        textStyle: widget.btnTextStyle,
-        backgroundColor: widget.btnSpecialBackgroundColor,
-        onPressed: () {
-          widget.onReturn();
-        },
       ),
     );
   }

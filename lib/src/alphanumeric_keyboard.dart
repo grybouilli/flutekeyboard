@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:flutekeyboard/layouts/symbol_layout.dart';
+import 'package:flutekeyboard/src/buttons.dart';
 import 'package:flutekeyboard/src/icon_key.dart';
 import 'package:flutekeyboard/src/special_key.dart';
 import 'package:flutekeyboard/src/text_key.dart';
@@ -104,7 +105,8 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
         case IconKeys.shift:
           return _shiftButton();
         case IconKeys.backspace:
-          return _backspaceButton();
+          return Buttons.backspaceButton(widget.backspaceIcon,
+              widget.btnSpecialBackgroundColor, widget.textController);
       }
     }
 
@@ -119,7 +121,8 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
         case SpecialKeys.alpha:
           return _alphaButton();
         case SpecialKeys.returnK:
-          return _returnButton();
+          return Buttons.returnButton(widget.btnTextStyle,
+              widget.btnSpecialBackgroundColor, widget.onReturn);
       }
     }
 
@@ -147,24 +150,6 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
             _shiftActive = !_shiftActive;
           });
           _reloadLayout();
-        },
-      ),
-    );
-  }
-
-  Widget _backspaceButton() {
-    return Expanded(
-      child: IconKey(
-        icon: widget.backspaceIcon,
-        backgroundColor: widget.btnSpecialBackgroundColor,
-        onPressed: () {
-          if (widget.textController.text.isEmpty) {
-            return;
-          }
-          widget.textController.text = widget.textController.text
-              .substring(0, widget.textController.text.length - 1);
-          widget.textController.selection = TextSelection.collapsed(
-              offset: widget.textController.text.length);
         },
       ),
     );
@@ -227,19 +212,6 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
             _currentLayout = widget.layout;
           });
           _reloadLayout();
-        },
-      ),
-    );
-  }
-
-  Widget _returnButton() {
-    return Expanded(
-      child: SpecialKey(
-        text: 'return',
-        textStyle: widget.btnTextStyle,
-        backgroundColor: widget.btnSpecialBackgroundColor,
-        onPressed: () {
-          widget.onReturn();
         },
       ),
     );
