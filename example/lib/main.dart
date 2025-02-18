@@ -38,19 +38,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late TextEditingController _textController;
+  final TextEditingController _textController = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
 
   FluteKeyboardType type = FluteKeyboardType.alphanumeric;
 
   @override
   void initState() {
-    _textController = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
     _textController.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -70,8 +71,13 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 160,
               padding: const EdgeInsets.all(16),
               child: TextField(
-                controller: _textController,
+                contextMenuBuilder: null,
                 autofocus: true,
+                focusNode: _focusNode,
+                controller: _textController,
+                onTapOutside: (event) {
+                  _focusNode.requestFocus();
+                },
                 decoration: const InputDecoration(
                   hintText: 'Type something',
                   labelStyle: TextStyle(
