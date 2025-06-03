@@ -32,6 +32,7 @@ class FluteKeyboard extends StatefulWidget {
 
   final Layout alphanumericLayout;
 
+  final String returnIcon;
   final Function onReturn;
 
   const FluteKeyboard({
@@ -49,6 +50,7 @@ class FluteKeyboard extends StatefulWidget {
     this.btnSpecialBackgroundColor = Colors.transparent,
     this.btnTextStyle = const TextStyle(color: Colors.white),
     this.alphanumericLayout = EnLayout.layout,
+    this.returnIcon = '',
   });
 
   @override
@@ -64,6 +66,7 @@ class _FluteKeyboardState extends State<FluteKeyboard> {
         btnSpecialBackgroundColor: widget.btnSpecialBackgroundColor,
         btnTextStyle: widget.btnTextStyle,
         backspaceIcon: widget.backspaceIcon,
+        returnIcon: widget.returnIcon,
         onReturn: widget.onReturn,
       );
     }
@@ -77,6 +80,7 @@ class _FluteKeyboardState extends State<FluteKeyboard> {
       btnTextStyle: widget.btnTextStyle,
       backspaceIcon: widget.backspaceIcon,
       layout: widget.alphanumericLayout,
+      returnIcon: widget.returnIcon,
       onReturn: widget.onReturn,
     );
   }

@@ -18,6 +18,7 @@ class NumericKeyboard extends StatefulWidget {
 
   final String backspaceIcon;
 
+  final String returnIcon;
   final Function onReturn;
 
   const NumericKeyboard({
@@ -27,6 +28,7 @@ class NumericKeyboard extends StatefulWidget {
     required this.btnSpecialBackgroundColor,
     required this.btnTextStyle,
     required this.backspaceIcon,
+    required this.returnIcon,
     required this.onReturn,
   });
 
@@ -72,7 +74,8 @@ class _NumericKeyboardState extends State<NumericKeyboard> {
       switch (type) {
         case SpecialKeys.returnK:
           return Buttons.returnButton(widget.btnTextStyle,
-              widget.btnSpecialBackgroundColor, widget.onReturn);
+              widget.btnSpecialBackgroundColor, widget.onReturn,
+              icon: widget.returnIcon);
         default:
           return const Placeholder();
       }

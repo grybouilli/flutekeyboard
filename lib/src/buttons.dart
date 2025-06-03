@@ -60,8 +60,21 @@ class Buttons {
   static Widget returnButton(
     TextStyle btnTextStyle,
     Color btnSpecialBackgroundColor,
-    Function onReturn,
-  ) {
+    Function onReturn, {
+    String icon = '',
+  }) {
+    if (icon.isNotEmpty) {
+      return Expanded(
+        child: IconKey(
+          icon: icon,
+          backgroundColor: btnSpecialBackgroundColor,
+          onPressed: () {
+            onReturn();
+          },
+        ),
+      );
+    }
+
     return Expanded(
       child: SpecialKey(
         text: 'return',

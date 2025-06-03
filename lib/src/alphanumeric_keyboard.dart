@@ -25,6 +25,7 @@ class AlphanumericKeyboard extends StatefulWidget {
 
   final Layout layout;
 
+  final String returnIcon;
   final Function onReturn;
 
   const AlphanumericKeyboard({
@@ -37,6 +38,7 @@ class AlphanumericKeyboard extends StatefulWidget {
     required this.shiftActiveIcon,
     required this.backspaceIcon,
     required this.layout,
+    required this.returnIcon,
     required this.onReturn,
   });
 
@@ -122,7 +124,8 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
           return _alphaButton();
         case SpecialKeys.returnK:
           return Buttons.returnButton(widget.btnTextStyle,
-              widget.btnSpecialBackgroundColor, widget.onReturn);
+              widget.btnSpecialBackgroundColor, widget.onReturn,
+              icon: widget.returnIcon);
       }
     }
 
