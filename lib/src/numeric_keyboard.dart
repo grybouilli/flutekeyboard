@@ -17,6 +17,7 @@ class NumericKeyboard extends BaseKeyboard {
     required super.btnSpecialBackgroundColor,
     required super.btnTextStyle,
     required super.backspaceIcon,
+    required super.btnReturnColor,
     required super.returnIcon,
     required super.onReturn,
   });
@@ -62,8 +63,8 @@ class _NumericKeyboardState extends State<NumericKeyboard> {
     if (type is SpecialKeys) {
       switch (type) {
         case SpecialKeys.returnK:
-          return Buttons.returnButton(widget.btnTextStyle,
-              widget.btnSpecialBackgroundColor, widget.onReturn,
+          return Buttons.returnButton(
+              widget.btnTextStyle, widget.btnReturnColor, widget.onReturn,
               icon: widget.returnIcon);
         default:
           return const Placeholder();

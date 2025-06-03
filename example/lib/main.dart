@@ -126,6 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 backspaceIcon: 'assets/backspace.png',
                 shiftIcon: 'assets/shift.png',
                 shiftActiveIcon: 'assets/shift_active.png',
+                btnReturnColor: Colors.blue,
                 btnTextStyle: const TextStyle(
                   color: Colors.black,
                   fontSize: 28,

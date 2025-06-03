@@ -23,6 +23,7 @@ class AlphanumericKeyboard extends BaseKeyboard {
     required super.btnSpecialBackgroundColor,
     required super.btnTextStyle,
     required super.backspaceIcon,
+    required super.btnReturnColor,
     required super.returnIcon,
     required super.onReturn,
     required this.shiftIcon,
@@ -111,8 +112,8 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
         case SpecialKeys.alpha:
           return _alphaButton();
         case SpecialKeys.returnK:
-          return Buttons.returnButton(widget.btnTextStyle,
-              widget.btnSpecialBackgroundColor, widget.onReturn,
+          return Buttons.returnButton(
+              widget.btnTextStyle, widget.btnReturnColor, widget.onReturn,
               icon: widget.returnIcon);
       }
     }
