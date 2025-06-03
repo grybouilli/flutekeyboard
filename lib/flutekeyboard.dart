@@ -33,7 +33,7 @@ class FluteKeyboard extends StatefulWidget {
   final Layout alphanumericLayout;
 
   final String returnIcon;
-  final Function onReturn;
+  final VoidCallback onReturn;
 
   const FluteKeyboard({
     super.key,

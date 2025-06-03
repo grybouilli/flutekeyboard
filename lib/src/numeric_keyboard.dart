@@ -3,33 +3,22 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:flutekeyboard/layouts/numeric_layout.dart';
+import 'package:flutekeyboard/src/base_keyboard.dart';
 import 'package:flutekeyboard/src/buttons.dart';
 import 'package:flutekeyboard/src/icon_key.dart';
 import 'package:flutekeyboard/src/special_key.dart';
 import 'package:flutekeyboard/src/text_key.dart';
 
-class NumericKeyboard extends StatefulWidget {
-  final TextEditingController textController;
-
-  final Color btnColor;
-  final Color btnSpecialBackgroundColor;
-
-  final TextStyle btnTextStyle;
-
-  final String backspaceIcon;
-
-  final String returnIcon;
-  final Function onReturn;
-
+class NumericKeyboard extends BaseKeyboard {
   const NumericKeyboard({
     super.key,
-    required this.textController,
-    required this.btnColor,
-    required this.btnSpecialBackgroundColor,
-    required this.btnTextStyle,
-    required this.backspaceIcon,
-    required this.returnIcon,
-    required this.onReturn,
+    required super.textController,
+    required super.btnColor,
+    required super.btnSpecialBackgroundColor,
+    required super.btnTextStyle,
+    required super.backspaceIcon,
+    required super.returnIcon,
+    required super.onReturn,
   });
 
   @override

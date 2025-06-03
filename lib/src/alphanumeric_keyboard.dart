@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:flutekeyboard/layouts/symbol_layout.dart';
+import 'package:flutekeyboard/src/base_keyboard.dart';
 import 'package:flutekeyboard/src/buttons.dart';
 import 'package:flutekeyboard/src/icon_key.dart';
 import 'package:flutekeyboard/src/special_key.dart';
@@ -10,36 +11,23 @@ import 'package:flutekeyboard/src/text_key.dart';
 
 typedef Layout = List<List>;
 
-class AlphanumericKeyboard extends StatefulWidget {
-  final TextEditingController textController;
-
-  final Color btnColor;
-  final Color btnSpecialBackgroundColor;
-
+class AlphanumericKeyboard extends BaseKeyboard {
   final String shiftIcon;
   final String shiftActiveIcon;
-
-  final TextStyle btnTextStyle;
-
-  final String backspaceIcon;
-
   final Layout layout;
-
-  final String returnIcon;
-  final Function onReturn;
 
   const AlphanumericKeyboard({
     super.key,
-    required this.textController,
-    required this.btnColor,
-    required this.btnSpecialBackgroundColor,
-    required this.btnTextStyle,
+    required super.textController,
+    required super.btnColor,
+    required super.btnSpecialBackgroundColor,
+    required super.btnTextStyle,
+    required super.backspaceIcon,
+    required super.returnIcon,
+    required super.onReturn,
     required this.shiftIcon,
     required this.shiftActiveIcon,
-    required this.backspaceIcon,
     required this.layout,
-    required this.returnIcon,
-    required this.onReturn,
   });
 
   @override
