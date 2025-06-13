@@ -90,9 +90,9 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
     }
   }
 
-  Widget _button(dynamic type) {
-    if (type is IconKeys) {
-      switch (type) {
+  Widget _button(dynamic data) {
+    if (data is IconKeys) {
+      switch (data) {
         case IconKeys.shift:
           return _shiftButton();
         case IconKeys.backspace:
@@ -101,8 +101,8 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
       }
     }
 
-    if (type is SpecialKeys) {
-      switch (type) {
+    if (data is SpecialKeys) {
+      switch (data) {
         case SpecialKeys.space:
           return _spaceButton();
         case SpecialKeys.symbol1:
@@ -118,16 +118,22 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
       }
     }
 
-    return _textButton(type);
+    return _textButton(data);
   }
 
   Widget _textButton(String text) {
+    final mainChar = text.isNotEmpty ? text[0] : '';
+    final List<String> alternatives =
+        text.length > 1 ? text.substring(1).split('') : [];
+
     return Expanded(
       child: TextKey(
-        textController: widget.textController,
-        text: _shiftActive ? text.toUpperCase() : text.toLowerCase(),
+        text: mainChar,
+        alternatives: alternatives,
         textStyle: widget.btnTextStyle,
         backgroundColor: widget.btnColor,
+        isShifted: _shiftActive,
+        textController: widget.textController,
       ),
     );
   }

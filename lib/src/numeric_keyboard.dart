@@ -77,10 +77,11 @@ class _NumericKeyboardState extends State<NumericKeyboard> {
   Widget _textButton(String text) {
     return Expanded(
       child: TextKey(
-        textController: widget.textController,
         text: text,
         textStyle: widget.btnTextStyle,
         backgroundColor: widget.btnColor,
+        isShifted: false,
+        textController: widget.textController,
       ),
     );
   }
