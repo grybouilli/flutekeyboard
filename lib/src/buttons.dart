@@ -3,17 +3,19 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:flutekeyboard/flutekeyboard_keys.dart';
+import 'package:flutekeyboard/flutekeyboard_theme.dart';
 
 class Buttons {
   static Widget backspaceButton(
     String icon,
-    Color backgroundColor,
     TextEditingController textController,
   ) {
+    final theme = FluteKeyboardTheme();
+
     return Expanded(
       child: IconKey(
         icon: icon,
-        backgroundColor: backgroundColor,
+        backgroundColor: theme.btnSpecialBackgroundColor,
         onPressed: () {
           final text = textController.text;
           final textSelection = textController.selection;
@@ -58,16 +60,16 @@ class Buttons {
   }
 
   static Widget returnButton(
-    TextStyle btnTextStyle,
-    Color btnSpecialBackgroundColor,
     Function onReturn, {
     String icon = '',
   }) {
+    final theme = FluteKeyboardTheme();
+
     if (icon.isNotEmpty) {
       return Expanded(
         child: IconKey(
           icon: icon,
-          backgroundColor: btnSpecialBackgroundColor,
+          backgroundColor: theme.btnReturnColor,
           onPressed: () {
             onReturn();
           },
@@ -78,8 +80,7 @@ class Buttons {
     return Expanded(
       child: SpecialKey(
         text: 'return',
-        textStyle: btnTextStyle,
-        backgroundColor: btnSpecialBackgroundColor,
+        backgroundColor: theme.btnReturnColor,
         onPressed: () {
           onReturn();
         },

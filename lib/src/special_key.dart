@@ -1,6 +1,9 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
+// Project imports:
+import 'package:flutekeyboard/flutekeyboard_theme.dart';
+
 enum SpecialKeys {
   space,
   symbol1,
@@ -12,8 +15,6 @@ enum SpecialKeys {
 class SpecialKey extends StatefulWidget {
   final String text;
 
-  final TextStyle textStyle;
-
   final Color backgroundColor;
 
   final Function onPressed;
@@ -21,7 +22,6 @@ class SpecialKey extends StatefulWidget {
   const SpecialKey({
     super.key,
     required this.text,
-    required this.textStyle,
     required this.backgroundColor,
     required this.onPressed,
   });
@@ -33,6 +33,8 @@ class SpecialKey extends StatefulWidget {
 class _SpecialKeyState extends State<SpecialKey> {
   @override
   Widget build(BuildContext context) {
+    final theme = FluteKeyboardTheme();
+
     return InkWell(
       onTap: () => widget.onPressed(),
       child: Container(
@@ -42,7 +44,7 @@ class _SpecialKeyState extends State<SpecialKey> {
         child: Center(
           child: Text(
             widget.text,
-            style: widget.textStyle,
+            style: theme.btnTextStyle,
           ),
         ),
       ),

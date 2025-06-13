@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:flutekeyboard/flutekeyboard_theme.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -57,6 +58,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = FluteKeyboardTheme();
+
+    theme.backgroundColor = const Color.fromARGB(255, 209, 211, 215);
+    theme.btnBackgroundColor = const Color.fromARGB(255, 255, 255, 255);
+    theme.btnSpecialBackgroundColor = const Color.fromARGB(255, 171, 175, 183);
+    theme.btnReturnColor = Colors.blue.shade100;
+    theme.btnTextStyle = const TextStyle(
+      color: Colors.black,
+      fontSize: 28,
+    );
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -119,18 +131,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 type: type,
                 alphanumericLayout: CustomLayout.layout,
                 textController: _textController,
-                backgroundColor: const Color.fromARGB(255, 209, 211, 215),
-                btnBackgroundColor: const Color.fromARGB(255, 255, 255, 255),
-                btnSpecialBackgroundColor:
-                    const Color.fromARGB(255, 171, 175, 183),
+                theme: theme,
                 backspaceIcon: 'assets/backspace.png',
                 shiftIcon: 'assets/shift.png',
                 shiftActiveIcon: 'assets/shift_active.png',
-                btnReturnColor: Colors.blue.shade100,
-                btnTextStyle: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 28,
-                ),
                 onReturn: () {
                   // ignore: avoid_print
                   print(_textController.text);

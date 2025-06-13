@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:flutekeyboard/flutekeyboard_theme.dart';
 import 'package:flutekeyboard/layouts/symbol_layout.dart';
 import 'package:flutekeyboard/src/base_keyboard.dart';
 import 'package:flutekeyboard/src/buttons.dart';
@@ -19,11 +20,7 @@ class AlphanumericKeyboard extends BaseKeyboard {
   const AlphanumericKeyboard({
     super.key,
     required super.textController,
-    required super.btnColor,
-    required super.btnSpecialBackgroundColor,
-    required super.btnTextStyle,
     required super.backspaceIcon,
-    required super.btnReturnColor,
     required super.returnIcon,
     required super.onReturn,
     required this.shiftIcon,
@@ -96,8 +93,8 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
         case IconKeys.shift:
           return _shiftButton();
         case IconKeys.backspace:
-          return Buttons.backspaceButton(widget.backspaceIcon,
-              widget.btnSpecialBackgroundColor, widget.textController);
+          return Buttons.backspaceButton(
+              widget.backspaceIcon, widget.textController);
       }
     }
 
@@ -112,9 +109,7 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
         case SpecialKeys.alpha:
           return _alphaButton();
         case SpecialKeys.returnK:
-          return Buttons.returnButton(
-              widget.btnTextStyle, widget.btnReturnColor, widget.onReturn,
-              icon: widget.returnIcon);
+          return Buttons.returnButton(widget.onReturn, icon: widget.returnIcon);
       }
     }
 
@@ -130,8 +125,6 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
       child: TextKey(
         text: mainChar,
         alternatives: alternatives,
-        textStyle: widget.btnTextStyle,
-        backgroundColor: widget.btnColor,
         isShifted: _shiftActive,
         textController: widget.textController,
       ),
@@ -139,10 +132,12 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
   }
 
   Widget _shiftButton() {
+    final theme = FluteKeyboardTheme();
+
     return Expanded(
       child: IconKey(
         icon: _shiftActive ? widget.shiftActiveIcon : widget.shiftIcon,
-        backgroundColor: widget.btnSpecialBackgroundColor,
+        backgroundColor: theme.btnSpecialBackgroundColor,
         onPressed: () {
           setState(() {
             _shiftActive = !_shiftActive;
@@ -154,12 +149,13 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
   }
 
   Widget _spaceButton() {
+    final theme = FluteKeyboardTheme();
+
     return Expanded(
       flex: 3,
       child: SpecialKey(
         text: 'space',
-        textStyle: widget.btnTextStyle,
-        backgroundColor: widget.btnColor,
+        backgroundColor: theme.btnBackgroundColor,
         onPressed: () {
           // Cursor is at the end of the text.
           if (widget.textController.selection.start ==
@@ -187,11 +183,12 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
   }
 
   Widget _symbol1Button() {
+    final theme = FluteKeyboardTheme();
+
     return Expanded(
       child: SpecialKey(
         text: '123',
-        textStyle: widget.btnTextStyle,
-        backgroundColor: widget.btnSpecialBackgroundColor,
+        backgroundColor: theme.btnSpecialBackgroundColor,
         onPressed: () {
           setState(() {
             _currentLayout = SymbolLayout.layout1;
@@ -203,11 +200,12 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
   }
 
   Widget _symbol2Button() {
+    final theme = FluteKeyboardTheme();
+
     return Expanded(
       child: SpecialKey(
         text: '#+=',
-        textStyle: widget.btnTextStyle,
-        backgroundColor: widget.btnSpecialBackgroundColor,
+        backgroundColor: theme.btnSpecialBackgroundColor,
         onPressed: () {
           setState(() {
             _currentLayout = SymbolLayout.layout2;
@@ -219,11 +217,12 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
   }
 
   Widget _alphaButton() {
+    final theme = FluteKeyboardTheme();
+
     return Expanded(
       child: SpecialKey(
         text: 'ABC',
-        textStyle: widget.btnTextStyle,
-        backgroundColor: widget.btnSpecialBackgroundColor,
+        backgroundColor: theme.btnSpecialBackgroundColor,
         onPressed: () {
           setState(() {
             _currentLayout = widget.layout;

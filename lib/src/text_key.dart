@@ -1,18 +1,17 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
+// Project imports:
+import 'package:flutekeyboard/flutekeyboard_theme.dart';
+
 class TextKey extends StatefulWidget {
   final String text;
   final List<String> alternatives;
-  final TextStyle textStyle;
-  final Color backgroundColor;
   final bool isShifted;
   final TextEditingController textController;
 
   const TextKey({
     required this.text,
-    required this.textStyle,
-    required this.backgroundColor,
     required this.isShifted,
     required this.textController,
     this.alternatives = const [],
@@ -33,6 +32,8 @@ class _LongPressKeyState extends State<TextKey> {
   Offset _popupPosition = Offset.zero;
 
   void _showOverlay(BuildContext context) {
+    final theme = FluteKeyboardTheme();
+
     final RenderBox box =
         _keyGlobal.currentContext!.findRenderObject() as RenderBox;
     final Offset buttonPosition = box.localToGlobal(Offset.zero);
@@ -47,7 +48,7 @@ class _LongPressKeyState extends State<TextKey> {
 
     _popupPosition = Offset(
       left,
-      buttonPosition.dy - _keySize!.height - 10,
+      buttonPosition.dy - _keySize!.height - 2,
     );
 
     _overlayEntry = OverlayEntry(
@@ -69,8 +70,8 @@ class _LongPressKeyState extends State<TextKey> {
                   margin: const EdgeInsets.symmetric(horizontal: 2),
                   decoration: BoxDecoration(
                     color: isHighlighted
-                        ? Colors.blue.shade100
-                        : widget.backgroundColor,
+                        ? theme.btnReturnColor
+                        : theme.btnBackgroundColor,
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: const [
                       BoxShadow(blurRadius: 4, color: Colors.black26)
@@ -79,10 +80,7 @@ class _LongPressKeyState extends State<TextKey> {
                   alignment: Alignment.center,
                   child: Text(
                     widget.isShifted ? char.toUpperCase() : char.toLowerCase(),
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: isHighlighted ? Colors.blue : Colors.black,
-                    ),
+                    style: theme.btnTextStyle,
                   ),
                 );
               }),
@@ -152,6 +150,8 @@ class _LongPressKeyState extends State<TextKey> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = FluteKeyboardTheme();
+
     return GestureDetector(
       onTap: () => _insertText(widget.text),
       onLongPressStart: (details) {
@@ -174,14 +174,14 @@ class _LongPressKeyState extends State<TextKey> {
       child: Container(
         key: _keyGlobal,
         decoration: BoxDecoration(
-            color: widget.backgroundColor,
+            color: theme.btnBackgroundColor,
             borderRadius: BorderRadius.circular(8)),
         child: Center(
           child: Text(
             widget.isShifted
                 ? widget.text.toUpperCase()
                 : widget.text.toLowerCase(),
-            style: widget.textStyle,
+            style: theme.btnTextStyle,
           ),
         ),
       ),

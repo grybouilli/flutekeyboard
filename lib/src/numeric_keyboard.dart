@@ -13,11 +13,7 @@ class NumericKeyboard extends BaseKeyboard {
   const NumericKeyboard({
     super.key,
     required super.textController,
-    required super.btnColor,
-    required super.btnSpecialBackgroundColor,
-    required super.btnTextStyle,
     required super.backspaceIcon,
-    required super.btnReturnColor,
     required super.returnIcon,
     required super.onReturn,
   });
@@ -49,37 +45,33 @@ class _NumericKeyboardState extends State<NumericKeyboard> {
     }
   }
 
-  Widget _button(dynamic type) {
-    if (type is IconKeys) {
-      switch (type) {
+  Widget _button(dynamic data) {
+    if (data is IconKeys) {
+      switch (data) {
         case IconKeys.backspace:
-          return Buttons.backspaceButton(widget.backspaceIcon,
-              widget.btnSpecialBackgroundColor, widget.textController);
+          return Buttons.backspaceButton(
+              widget.backspaceIcon, widget.textController);
         default:
           return const Placeholder();
       }
     }
 
-    if (type is SpecialKeys) {
-      switch (type) {
+    if (data is SpecialKeys) {
+      switch (data) {
         case SpecialKeys.returnK:
-          return Buttons.returnButton(
-              widget.btnTextStyle, widget.btnReturnColor, widget.onReturn,
-              icon: widget.returnIcon);
+          return Buttons.returnButton(widget.onReturn, icon: widget.returnIcon);
         default:
           return const Placeholder();
       }
     }
 
-    return _textButton(type);
+    return _textButton(data);
   }
 
   Widget _textButton(String text) {
     return Expanded(
       child: TextKey(
         text: text,
-        textStyle: widget.btnTextStyle,
-        backgroundColor: widget.btnColor,
         isShifted: false,
         textController: widget.textController,
       ),

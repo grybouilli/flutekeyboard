@@ -4,6 +4,7 @@ library flutekeyboard;
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:flutekeyboard/flutekeyboard_theme.dart';
 import 'package:flutekeyboard/layouts/en_layout.dart';
 import 'package:flutekeyboard/src/alphanumeric_keyboard.dart';
 import 'package:flutekeyboard/src/numeric_keyboard.dart';
@@ -12,31 +13,21 @@ enum FluteKeyboardType { numeric, alphanumeric }
 
 class FluteKeyboard extends StatefulWidget {
   final FluteKeyboardType type;
-
   final TextEditingController textController;
-
   final double width;
   final double height;
 
-  final Color backgroundColor;
-
-  final Color btnBackgroundColor;
-  final Color btnSpecialBackgroundColor;
-
-  final TextStyle btnTextStyle;
-
   final String shiftIcon;
   final String shiftActiveIcon;
-
   final String backspaceIcon;
-
   final Layout alphanumericLayout;
 
-  final Color btnReturnColor;
   final String returnIcon;
   final VoidCallback onReturn;
 
-  const FluteKeyboard({
+  late final FluteKeyboardTheme theme;
+
+  FluteKeyboard({
     super.key,
     required this.type,
     required this.textController,
@@ -46,14 +37,12 @@ class FluteKeyboard extends StatefulWidget {
     required this.onReturn,
     this.width = 480,
     this.height = 240,
-    this.backgroundColor = Colors.transparent,
-    this.btnBackgroundColor = Colors.transparent,
-    this.btnSpecialBackgroundColor = Colors.transparent,
-    this.btnTextStyle = const TextStyle(color: Colors.white),
+    FluteKeyboardTheme? theme,
     this.alphanumericLayout = EnLayout.layout,
-    this.btnReturnColor = Colors.transparent,
     this.returnIcon = '',
-  });
+  }) {
+    this.theme = theme ?? FluteKeyboardTheme();
+  }
 
   @override
   State<FluteKeyboard> createState() => _FluteKeyboardState();
@@ -64,11 +53,7 @@ class _FluteKeyboardState extends State<FluteKeyboard> {
     if (keyboardType == FluteKeyboardType.numeric) {
       return NumericKeyboard(
         textController: widget.textController,
-        btnColor: widget.btnBackgroundColor,
-        btnSpecialBackgroundColor: widget.btnSpecialBackgroundColor,
-        btnTextStyle: widget.btnTextStyle,
         backspaceIcon: widget.backspaceIcon,
-        btnReturnColor: widget.btnReturnColor,
         returnIcon: widget.returnIcon,
         onReturn: widget.onReturn,
       );
@@ -76,14 +61,10 @@ class _FluteKeyboardState extends State<FluteKeyboard> {
 
     return AlphanumericKeyboard(
       textController: widget.textController,
-      btnColor: widget.btnBackgroundColor,
-      btnSpecialBackgroundColor: widget.btnSpecialBackgroundColor,
       shiftIcon: widget.shiftIcon,
       shiftActiveIcon: widget.shiftActiveIcon,
-      btnTextStyle: widget.btnTextStyle,
       backspaceIcon: widget.backspaceIcon,
       layout: widget.alphanumericLayout,
-      btnReturnColor: widget.btnReturnColor,
       returnIcon: widget.returnIcon,
       onReturn: widget.onReturn,
     );
@@ -91,10 +72,12 @@ class _FluteKeyboardState extends State<FluteKeyboard> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = FluteKeyboardTheme();
+
     return Container(
       width: widget.width,
       height: widget.height,
-      decoration: BoxDecoration(color: widget.backgroundColor),
+      decoration: BoxDecoration(color: theme.backgroundColor),
       padding: const EdgeInsets.all(8),
       child: keyboard(widget.type),
     );
