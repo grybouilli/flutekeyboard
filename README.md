@@ -1,15 +1,35 @@
-# Flutekeyboard
+# Flutekeyboard – Customizable, Multi-Language On-Screen Keyboard
 
-Virtual keyboard usable in any Flutter platform. Fully customizable both in layout and design.
+## ✨ Features
 
-## Getting Started
+- **Alphanumeric and numeric keyboards**
+- **Fully customizable UI**
+  - Colors
+  - Text styles
+  - Icons
+- **Multi-language layout support**
+  - English
+  - Italian
+  - German
+  - French
+  - Spanish
+  - Portuguese
+  - Polish
+  - Dutch
+  - Czech
+  - More to come
+- **Symbol pages** (e.g., punctuation, special characters)
+- **Custom layout support** – define your own key arrangements
+- **Alternative key support** – long-press secondary keys
+
+## 📦 Installation
 
 In the `pubspec.yaml` of your flutter project, add the following dependency:
 
 ```yaml
 dependencies:
   ...
-  flutekeyboard: ^0.1.0
+  flutekeyboard: ^latest_version
 ```
 
 or
@@ -35,8 +55,7 @@ To create custom layout import:
 import 'package:flutekeyboard/flutekeyboard_keys.dart';
 ```
 
-
-## Usage
+## 🚀 Usage
 
 ### Basic Alphanumeric Keyboard
 
