@@ -1,0 +1,27 @@
+name: Analyze
+
+on:
+  pull_request: {}
+  push: { branches: [main] }
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/cirruslabs/flutter:latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Flutter doctor
+        run: flutter doctor
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze code
+        run: flutter analyze
+
+      - name: Check formatting
+        run: dart format lib example --set-exit-if-changed
