@@ -1,4 +1,4 @@
-library flutekeyboard;
+library;
 
 // Flutter imports:
 import 'package:flutter/material.dart';
