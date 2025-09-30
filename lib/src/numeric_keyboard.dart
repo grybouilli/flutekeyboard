@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:flutekeyboard/flutekeyboard_theme.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
@@ -10,13 +11,17 @@ import 'package:flutekeyboard/src/special_key.dart';
 import 'package:flutekeyboard/src/text_key.dart';
 
 class NumericKeyboard extends BaseKeyboard {
-  const NumericKeyboard({
+  late final FluteKeyboardTheme theme;
+  NumericKeyboard({
     super.key,
     required super.textController,
     required super.backspaceIcon,
     required super.returnIcon,
     required super.onReturn,
-  });
+    FluteKeyboardTheme? theme,
+  }) {
+    this.theme = theme ?? FluteKeyboardTheme();
+  }
 
   @override
   State<NumericKeyboard> createState() => _NumericKeyboardState();
@@ -74,6 +79,7 @@ class _NumericKeyboardState extends State<NumericKeyboard> {
         text: text,
         isShifted: false,
         textController: widget.textController,
+        theme: widget.theme,
       ),
     );
   }
