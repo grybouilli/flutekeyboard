@@ -15,3 +15,5 @@ abstract class BaseKeyboard extends StatefulWidget {
     required this.onReturn,
   });
 }
+
+typedef Layout = List<List>;

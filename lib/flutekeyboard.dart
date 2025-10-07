@@ -1,6 +1,8 @@
 library;
 
 // Flutter imports:
+import 'package:flutekeyboard/layouts/numeric_layout.dart';
+import 'package:flutekeyboard/src/base_keyboard.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
@@ -20,7 +22,7 @@ class FluteKeyboard extends StatefulWidget {
   final String shiftIcon;
   final String shiftActiveIcon;
   final String backspaceIcon;
-  final Layout alphanumericLayout;
+  final Layout customLayout;
 
   final String returnIcon;
   final VoidCallback onReturn;
@@ -38,7 +40,7 @@ class FluteKeyboard extends StatefulWidget {
     this.width = 480,
     this.height = 240,
     FluteKeyboardTheme? theme,
-    this.alphanumericLayout = EnLayout.layout,
+    this.customLayout = const [],
     this.returnIcon = '',
   }) {
     this.theme = theme ?? FluteKeyboardTheme();
@@ -54,6 +56,7 @@ class _FluteKeyboardState extends State<FluteKeyboard> {
       return NumericKeyboard(
         textController: widget.textController,
         backspaceIcon: widget.backspaceIcon,
+        layout: widget.customLayout,
         returnIcon: widget.returnIcon,
         onReturn: widget.onReturn,
       );
@@ -64,7 +67,7 @@ class _FluteKeyboardState extends State<FluteKeyboard> {
       shiftIcon: widget.shiftIcon,
       shiftActiveIcon: widget.shiftActiveIcon,
       backspaceIcon: widget.backspaceIcon,
-      layout: widget.alphanumericLayout,
+      layout: widget.customLayout,
       returnIcon: widget.returnIcon,
       onReturn: widget.onReturn,
     );

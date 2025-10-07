@@ -7,6 +7,7 @@ import 'package:flutekeyboard/flutekeyboard.dart';
 
 // Project imports:
 import 'package:example/custom_layout.dart';
+typedef Layout = List<List>;
 
 void main() {
   runApp(const MyApp());
@@ -43,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final FocusNode _focusNode = FocusNode();
 
   FluteKeyboardType type = FluteKeyboardType.alphanumeric;
+  Layout layout = List.from(CustomLayout.layout);
 
   @override
   void initState() {
@@ -108,8 +110,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 () {
                   if (type == FluteKeyboardType.alphanumeric) {
                     type = FluteKeyboardType.numeric;
+                    layout = List.from([]);
                   } else {
                     type = FluteKeyboardType.alphanumeric;
+                    layout = List.from(CustomLayout.layout);
                   }
                 },
               ),
@@ -129,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: FluteKeyboard(
                 width: 800,
                 type: type,
-                alphanumericLayout: CustomLayout.layout,
+                customLayout: layout,
                 textController: _textController,
                 theme: theme,
                 backspaceIcon: 'assets/backspace.png',

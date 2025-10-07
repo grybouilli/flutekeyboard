@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:flutekeyboard/layouts/en_layout.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
@@ -9,8 +10,6 @@ import 'package:flutekeyboard/src/buttons.dart';
 import 'package:flutekeyboard/src/icon_key.dart';
 import 'package:flutekeyboard/src/special_key.dart';
 import 'package:flutekeyboard/src/text_key.dart';
-
-typedef Layout = List<List>;
 
 class AlphanumericKeyboard extends BaseKeyboard {
   final String shiftIcon;
@@ -240,7 +239,13 @@ class _AlphanumericKeyboardState extends State<AlphanumericKeyboard> {
 
   @override
   void initState() {
-    _currentLayout = widget.layout;
+    if(widget.layout.isEmpty)
+    {
+      _currentLayout = EnLayout.layout;
+    } else
+    {
+      _currentLayout = widget.layout;
+    }
     _reloadLayout();
     super.initState();
   }

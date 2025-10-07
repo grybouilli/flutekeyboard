@@ -12,12 +12,14 @@ import 'package:flutekeyboard/src/text_key.dart';
 
 class NumericKeyboard extends BaseKeyboard {
   late final FluteKeyboardTheme theme;
+  final Layout layout;
   NumericKeyboard({
     super.key,
     required super.textController,
     required super.backspaceIcon,
     required super.returnIcon,
     required super.onReturn,
+    required this.layout,
     FluteKeyboardTheme? theme,
   }) {
     this.theme = theme ?? FluteKeyboardTheme();
@@ -31,7 +33,7 @@ class _NumericKeyboardState extends State<NumericKeyboard> {
   final double _columnSpacing = 8;
   final double _rowSpacing = 12;
 
-  final List<List> _currentLayout = NumericLayout.layout;
+  List<List> _currentLayout = [];
 
   final List<List<Widget>> _rows = [];
 
@@ -86,6 +88,13 @@ class _NumericKeyboardState extends State<NumericKeyboard> {
 
   @override
   void initState() {
+    if(widget.layout.isEmpty)
+    {
+      _currentLayout = NumericLayout.layout;
+    } else
+    {
+      _currentLayout = widget.layout;
+    }
     _reloadLayout();
     super.initState();
   }
